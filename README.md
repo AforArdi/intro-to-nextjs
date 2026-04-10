@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Intro to Next.js
 
-## Getting Started
+A full-stack learning project exploring core Next.js App Router concepts, dynamic routing, and component architecture.
 
-First, run the development server:
+## Technology Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Framework**: [Next.js 16.2.3](https://nextjs.org) - App Router with server/client component split
+- **Runtime**: React 19.2.4
+- **Styling**: TailwindCSS 4 + DaisyUI 5.5.19
+- **Dev**: ESLint, TypeScript-ready
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.js                 # Root layout with Navbar
+│   ├── page.js                   # Home page
+│   ├── globals.css
+│   ├── posts/
+│   │   ├── page.jsx              # All posts listing
+│   │   ├── loading.jsx           # Loading UI
+│   │   └── [post]/page.jsx       # Dynamic post detail
+│   ├── users/
+│   │   ├── page.jsx              # All users listing
+│   │   ├── loading.jsx           # Loading UI
+│   │   └── [user]/page.jsx       # Dynamic user detail
+│   └── dashboard/
+│       ├── layout.jsx            # Dashboard layout
+│       ├── page.jsx              # Dashboard home
+│       ├── profile/page.jsx      # User profile
+│       └── hishab/page.jsx       # Hishab view
+└── components/
+    └── Navbar.jsx                # Active-link responsive navbar
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Concepts Demonstrated
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 1. Active Link Detection
+The `Navbar` component uses the `usePathname()` hook to detect the current route and dynamically apply Tailwind styles:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```jsx
+const pathname = usePathname();
+<Link className={`${pathname === '/' ? 'text-purple-500' : ''}`} href="/">
+  Home
+</Link>
+```
 
-## Learn More
+### 2. Client vs. Server Components
+- `Navbar.jsx` uses `'use client'` to leverage browser APIs (`usePathname`)
+- Root layout keeps server-rendering by default for optimal performance
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Dynamic Routes
+- `[post]` and `[user]` segments enable dynamic page generation
+- Loading states with `loading.jsx` files for better UX
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Nested Layouts
+Dashboard section has its own layout structure, demonstrating layout composition patterns.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Learning Focus
 
-## Deploy on Vercel
+This project is part of a structured full-stack learning curriculum. Current focus areas:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- ✅ Next.js App Router fundamentals
+- ✅ Dynamic routing with file-based conventions
+- ✅ Component composition and layout patterns
+- ✅ Active link styling with client-side hooks
+- 🔄 Data fetching and loading states (in progress)
+- 📋 Form handling and state management (upcoming)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Resources
+
+- [Next.js Documentation](https://nextjs.org/docs) - Official docs for App Router, routing, and rendering
+- [TailwindCSS](https://tailwindcss.com/docs) - Utility-first CSS framework
+- [DaisyUI](https://daisyui.com/) - Tailwind component library used for navbar styling
+- [React Hooks](https://react.dev/reference/react) - `usePathname()`, component state, and effects
+
+## Notes
+
+- This is an educational project, not production code
+- Component patterns prioritize clarity and learning over optimization
+- Explore the dashboard and dynamic routes to see nested navigation in action
+
+## Share Your Development Journey
+
+Building in public accelerates growth. Connect and share your progress:
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/mohammad-ardi/) - Professional network
+- 📘 [Facebook](https://www.facebook.com/miftahulislamardi) - Community engagement
+
+Let's build together and grow as developers!
