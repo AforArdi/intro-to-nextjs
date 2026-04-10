@@ -3,6 +3,7 @@ const Navbar = () => {
         <li><a href="/">Home</a></li>
         <li><a href="/posts">All Post</a></li>
         <li><a href="/users">All Users</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
     </>
     return ( 
         <div className="navbar bg-base-100 shadow-sm">
